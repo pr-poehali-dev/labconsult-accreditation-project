@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
 import ConsultationModal from "@/components/ConsultationModal";
+import NewsSection from "@/components/NewsSection";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { sendToWhatsApp } from "@/utils/whatsapp";
 
@@ -61,6 +62,7 @@ const Index = () => {
           <nav className="hidden md:flex space-x-6">
             <a href="#services" className="hover:text-professional-green transition-colors">Услуги</a>
             <a href="#advantages" className="hover:text-professional-green transition-colors">Преимущества</a>
+            <a href="#news" className="hover:text-professional-green transition-colors">Новости</a>
             <a href="#contact" className="hover:text-professional-green transition-colors">Контакты</a>
           </nav>
           <ConsultationModal>
@@ -287,6 +289,11 @@ const Index = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* News Section */}
+      <section id="news">
+        <NewsSection />
       </section>
 
       {/* Contact Section */}
