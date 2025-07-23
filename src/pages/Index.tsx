@@ -61,6 +61,7 @@ const Index = () => {
           </div>
           <nav className="hidden md:flex space-x-6">
             <a href="#services" className="hover:text-professional-green transition-colors">Услуги</a>
+            <a href="#equipment" className="hover:text-professional-green transition-colors">Подобрать оборудование</a>
             <a href="#advantages" className="hover:text-professional-green transition-colors">Преимущества</a>
             <a href="#news" className="hover:text-professional-green transition-colors">Новости</a>
             <a href="#contact" className="hover:text-professional-green transition-colors">Контакты</a>
@@ -200,6 +201,73 @@ const Index = () => {
               </CardContent>
             </Card>
           </div>
+        </div>
+      </section>
+
+      {/* Equipment Section */}
+      <section 
+        id="equipment" 
+        className="py-20 bg-white"
+      >
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h3 className="text-4xl font-montserrat font-bold text-professional-darkGray mb-8">
+            Подобрать оборудование
+          </h3>
+          <p className="text-lg font-open-sans text-gray-600 mb-12 max-w-3xl mx-auto">
+            Мы поможем подобрать и поставить современное испытательное оборудование от ведущих мировых производителей, 
+            полностью соответствующее требованиям вашей лаборатории.
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="bg-professional-blue p-3 rounded-lg w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Icon name="FlaskConical" size={28} className="text-white" />
+                </div>
+                <CardTitle className="text-xl font-montserrat">Аналитическое оборудование</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="font-open-sans text-gray-600">
+                  Спектрометры, хроматографы, микроскопы и другие приборы для химического анализа
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="bg-professional-green p-3 rounded-lg w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Icon name="Cog" size={28} className="text-white" />
+                </div>
+                <CardTitle className="text-xl font-montserrat">Испытательные стенды</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="font-open-sans text-gray-600">
+                  Универсальные машины, климатические камеры, вибростенды для механических испытаний
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="bg-professional-red p-3 rounded-lg w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Icon name="Gauge" size={28} className="text-white" />
+                </div>
+                <CardTitle className="text-xl font-montserrat">Метрологическое обеспечение</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="font-open-sans text-gray-600">
+                  Эталоны, калибраторы, поверочное оборудование для обеспечения точности измерений
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <ConsultationModal>
+            <Button size="lg" className="bg-professional-blue hover:bg-professional-blue/90">
+              <Icon name="Settings" size={20} className="mr-2" />
+              Получить консультацию по оборудованию
+            </Button>
+          </ConsultationModal>
         </div>
       </section>
 
