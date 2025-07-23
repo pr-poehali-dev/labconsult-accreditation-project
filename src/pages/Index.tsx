@@ -275,15 +275,15 @@ const Index = () => {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Icon name="Phone" size={20} className="text-professional-green" />
-                  <span className="font-open-sans">+7 (495) 123-45-67</span>
+                  <span className="font-open-sans">+7 (999) 964-56-17</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Icon name="Mail" size={20} className="text-professional-green" />
-                  <span className="font-open-sans">info@labconsult.ru</span>
+                  <span className="font-open-sans">Konsalting-Lab@yandex.ru</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Icon name="MapPin" size={20} className="text-professional-green" />
-                  <span className="font-open-sans">г. Москва, ул. Научная, д. 15</span>
+                  <span className="font-open-sans">г. Москва, пр-т Мира, д. 106</span>
                 </div>
               </div>
             </div>
@@ -355,9 +355,9 @@ const Index = () => {
             <div>
               <h5 className="font-montserrat font-bold mb-4">Контакты</h5>
               <div className="space-y-2 font-open-sans text-gray-300">
-                <div>+7 (495) 123-45-67</div>
-                <div>info@labconsult.ru</div>
-                <div>г. Москва, ул. Научная, д. 15</div>
+                <div>+7 (999) 964-56-17</div>
+                <div>Konsalting-Lab@yandex.ru</div>
+                <div>г. Москва, пр-т Мира, д. 106</div>
               </div>
             </div>
           </div>

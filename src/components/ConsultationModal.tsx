@@ -143,7 +143,7 @@ const ConsultationModal = ({ children }: ConsultationModalProps) => {
               size="lg"
             >
               <Icon name="Phone" size={20} className="mr-2" />
-              +7 (495) 123-45-67
+              +7 (999) 964-56-17
             </Button>
           </div>
         </form>
