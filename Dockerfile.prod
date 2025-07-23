@@ -1,0 +1,77 @@
+# Production Dockerfile для ЛабКонсалт
+# Многоэтапная сборка для оптимизации размера образа
+
+# Этап 1: Сборка приложения
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+# Устанавливаем зависимости
+COPY package*.json ./
+COPY bun.lockb ./
+RUN npm install -g bun && bun install --frozen-lockfile
+
+# Копируем исходный код
+COPY . .
+
+# Создаем production сборку
+RUN bun run build
+
+# Этап 2: Production образ
+FROM nginx:1.25-alpine AS production
+
+# Устанавливаем дополнительные пакеты для безопасности
+RUN apk add --no-cache \
+    curl \
+    certbot \
+    certbot-nginx \
+    openssl
+
+# Создаем пользователя для приложения
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S labkonsalt -u 1001
+
+# Копируем собранное приложение
+COPY --from=builder /app/dist /var/www/html
+COPY --from=builder /app/nginx.conf /etc/nginx/conf.d/default.conf
+
+# Создаем необходимые директории
+RUN mkdir -p /var/www/certbot && \
+    mkdir -p /var/log/nginx && \
+    chown -R labkonsalt:nodejs /var/www/html && \
+    chown -R labkonsalt:nodejs /var/www/certbot
+
+# Настройки безопасности Nginx
+RUN sed -i 's/user nginx;/user labkonsalt;/' /etc/nginx/nginx.conf && \
+    sed -i '/server_tokens/d' /etc/nginx/nginx.conf && \
+    echo 'server_tokens off;' >> /etc/nginx/nginx.conf
+
+# Создаем health check endpoint
+RUN echo '#!/bin/sh\ncurl -f http://localhost:80/health || exit 1' > /usr/local/bin/healthcheck && \
+    chmod +x /usr/local/bin/healthcheck
+
+# Копируем скрипт запуска
+COPY <<EOF /docker-entrypoint.sh
+#!/bin/sh
+set -e
+
+# Проверяем конфигурацию Nginx
+nginx -t
+
+# Запускаем Nginx
+exec nginx -g 'daemon off;'
+EOF
+
+RUN chmod +x /docker-entrypoint.sh
+
+# Открываем порты
+EXPOSE 80 443
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+    CMD /usr/local/bin/healthcheck
+
+# Запуск от имени обычного пользователя
+USER labkonsalt
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
