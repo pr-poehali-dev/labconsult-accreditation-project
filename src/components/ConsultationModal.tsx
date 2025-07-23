@@ -27,7 +27,7 @@ const ConsultationModal = ({ children }: ConsultationModalProps) => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!formData.name || !formData.phone) {
@@ -35,30 +35,33 @@ const ConsultationModal = ({ children }: ConsultationModalProps) => {
       return;
     }
 
-    // Формируем письмо для отправки на почту
-    const subject = 'Новая заявка на консультацию - ЛабКонсалт';
-    const body = `
-Новая заявка на консультацию:
+    try {
+      // Отправляем данные на сервер
+      const response = await fetch('/api/send-consultation', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email || '',
+          message: formData.message || 'Клиент хочет получить консультацию по услугам ЛабКонсалт',
+          timestamp: new Date().toISOString()
+        }),
+      });
 
-Имя: ${formData.name}
-Телефон: ${formData.phone}
-Email: ${formData.email || 'Не указан'}
-Сообщение: ${formData.message || 'Клиент хочет получить консультацию по услугам ЛабКонсалт'}
-
----
-Заявка отправлена через сайт ЛабКонсалт
-Дата: ${new Date().toLocaleString('ru-RU')}
-    `.trim();
-
-    // Открываем почтовый клиент с заполненными данными
-    const mailtoUrl = `mailto:Konsalting-Lab@yandex.ru?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(mailtoUrl, '_blank');
-
-    // Показываем сообщение об успешной отправке
-    alert('Заявка подготовлена! Откроется почтовый клиент для отправки.');
-
-    // Очищаем форму после отправки
-    setFormData({ name: '', phone: '', email: '', message: '' });
+      if (response.ok) {
+        alert('Заявка успешно отправлена! Наш специалист свяжется с вами в течение часа.');
+        // Очищаем форму после успешной отправки
+        setFormData({ name: '', phone: '', email: '', message: '' });
+      } else {
+        throw new Error('Ошибка при отправке заявки');
+      }
+    } catch (error) {
+      console.error('Ошибка отправки:', error);
+      alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте еще раз или свяжитесь с нами по телефону.');
+    }
   };
 
   return (
