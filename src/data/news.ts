@@ -6,6 +6,7 @@ export interface NewsItem {
   source: string;
   category: 'accreditation' | 'regulation' | 'equipment' | 'standards';
   isImportant?: boolean;
+  url?: string;
 }
 
 export const newsData: NewsItem[] = [
@@ -16,7 +17,8 @@ export const newsData: NewsItem[] = [
     date: '2024-01-15',
     source: 'Росаккредитация',
     category: 'accreditation',
-    isImportant: true
+    isImportant: true,
+    url: 'https://www.akkreditazia.ru/novosti-rosakkredi­taczii-vazhno/'
   },
   {
     id: '2',
@@ -25,7 +27,8 @@ export const newsData: NewsItem[] = [
     date: '2024-02-20',
     source: 'Росстандарт',
     category: 'standards',
-    isImportant: true
+    isImportant: true,
+    url: 'https://fsa.gov.ru/press-center/info/9418/'
   },
   {
     id: '3',
@@ -33,7 +36,8 @@ export const newsData: NewsItem[] = [
     summary: 'Внедрение электронного документооборота и дистанционных аудитов значительно ускоряет процесс получения аккредитации.',
     date: '2024-03-10',
     source: 'TechExpert',
-    category: 'accreditation'
+    category: 'accreditation',
+    url: 'https://www.nice-consulting.ru/services/akkreditacziya-laboratorij/'
   },
   {
     id: '4',
@@ -41,7 +45,8 @@ export const newsData: NewsItem[] = [
     summary: 'Роспотребнадзор утвердил обновленные требования к организации работы испытательных лабораторий в сфере санитарно-эпидемиологического надзора.',
     date: '2024-04-05',
     source: 'Роспотребнадзор',
-    category: 'regulation'
+    category: 'regulation',
+    url: 'https://www.crc.ru/news/newsaccr/'
   },
   {
     id: '5',
@@ -49,7 +54,8 @@ export const newsData: NewsItem[] = [
     summary: 'Аналитический обзор российского рынка лабораторного оборудования показал рост спроса на отечественные приборы и системы.',
     date: '2024-05-18',
     source: 'Лаборатория и производство',
-    category: 'equipment'
+    category: 'equipment',
+    url: 'https://www.sro-licence.ru/registratsiya-laboratorii/akkreditatsiya-ispytatelnoy-laboratorii'
   },
   {
     id: '6',
@@ -57,7 +63,8 @@ export const newsData: NewsItem[] = [
     summary: 'Росаккредитация запустила расширенную программу межлабораторных сравнительных испытаний для повышения качества измерений.',
     date: '2024-06-12',
     source: 'Росаккредитация',
-    category: 'accreditation'
+    category: 'accreditation',
+    url: 'https://fsa.gov.ru/press-center/press/7603/'
   }
 ];
 
@@ -79,4 +86,10 @@ export const getCategoryName = (category: NewsItem['category']) => {
     standards: 'Стандарты'
   };
   return names[category];
+};
+
+export const openNewsLink = (url?: string) => {
+  if (url) {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
 };

@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
-import { newsData, getCategoryColor, getCategoryName, type NewsItem } from "@/data/news";
+import { newsData, getCategoryColor, getCategoryName, openNewsLink, type NewsItem } from "@/data/news";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const NewsCard = ({ news, index }: { news: NewsItem; index: number }) => {
@@ -62,6 +62,7 @@ const NewsCard = ({ news, index }: { news: NewsItem; index: number }) => {
           variant="outline" 
           size="sm" 
           className="mt-4 text-professional-blue border-professional-blue hover:bg-professional-blue hover:text-white"
+          onClick={() => openNewsLink(news.url)}
         >
           <Icon name="ExternalLink" size={14} className="mr-2" />
           Подробнее
