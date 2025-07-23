@@ -18,10 +18,26 @@ const Footer = () => {
           <div>
             <h5 className="font-montserrat font-bold mb-4">Услуги</h5>
             <ul className="space-y-2 font-open-sans text-gray-300">
-              <li>Аккредитация лабораторий</li>
-              <li>Поставка оборудования</li>
-              <li>Обучение персонала</li>
-              <li>Техническая поддержка</li>
+              <li>
+                <a href="#services" className="hover:text-professional-green transition-colors">
+                  Аккредитация лабораторий
+                </a>
+              </li>
+              <li>
+                <a href="#equipment" className="hover:text-professional-green transition-colors">
+                  Поставка оборудования
+                </a>
+              </li>
+              <li>
+                <a href="#advantages" className="hover:text-professional-green transition-colors">
+                  Обучение персонала
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:text-professional-green transition-colors">
+                  Техническая поддержка
+                </a>
+              </li>
             </ul>
           </div>
 
