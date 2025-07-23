@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import Icon from "@/components/ui/icon";
+import { sendToWhatsApp, openWhatsAppChat } from "@/utils/whatsapp";
 
 interface ConsultationModalProps {
   children: React.ReactNode;
@@ -28,9 +29,21 @@ const ConsultationModal = ({ children }: ConsultationModalProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Здесь будет отправка формы
-    alert('Спасибо! Мы свяжемся с вами в ближайшее время.');
+    
+    if (!formData.name || !formData.phone) {
+      alert('Пожалуйста, заполните обязательные поля (Имя и Телефон)');
+      return;
+    }
+
+    // Отправляем данные в WhatsApp
+    sendToWhatsApp({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      message: formData.message || 'Клиент хочет получить консультацию по услугам ЛабКонсалт'
+    });
+
+    // Очищаем форму после отправки
     setFormData({ name: '', phone: '', email: '', message: '' });
   };
 
@@ -141,6 +154,7 @@ const ConsultationModal = ({ children }: ConsultationModalProps) => {
               variant="outline"
               className="flex items-center justify-center border-professional-green text-professional-green hover:bg-professional-green hover:text-white"
               size="lg"
+              onClick={() => openWhatsAppChat()}
             >
               <Icon name="Phone" size={20} className="mr-2" />
               +7 (999) 964-56-17

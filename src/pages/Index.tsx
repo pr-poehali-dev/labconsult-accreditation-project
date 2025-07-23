@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -6,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
 import ConsultationModal from "@/components/ConsultationModal";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { sendToWhatsApp } from "@/utils/whatsapp";
 
 const Index = () => {
   const heroAnimation = useScrollAnimation();
@@ -13,6 +15,39 @@ const Index = () => {
   const advantagesAnimation = useScrollAnimation();
   const statsAnimation = useScrollAnimation();
   const contactAnimation = useScrollAnimation();
+
+  const [contactFormData, setContactFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    message: ''
+  });
+
+  const handleContactInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setContactFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!contactFormData.name || !contactFormData.phone) {
+      alert('Пожалуйста, заполните обязательные поля (Имя и Телефон)');
+      return;
+    }
+
+    sendToWhatsApp({
+      name: contactFormData.name,
+      phone: contactFormData.phone,
+      email: contactFormData.email,
+      message: contactFormData.message || 'Клиент оставил заявку через контактную форму на сайте'
+    });
+
+    setContactFormData({ name: '', phone: '', email: '', message: '' });
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -292,36 +327,49 @@ const Index = () => {
               <h4 className="text-2xl font-montserrat font-bold text-professional-darkGray mb-6">
                 Заявка на консультацию
               </h4>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleContactSubmit}>
                 <div className="grid md:grid-cols-2 gap-4">
                   <Input 
-                    placeholder="Ваше имя" 
+                    name="name"
+                    value={contactFormData.name}
+                    onChange={handleContactInputChange}
+                    placeholder="Ваше имя *" 
                     className="text-professional-darkGray"
+                    required
                   />
                   <Input 
-                    placeholder="Телефон" 
+                    name="phone"
+                    value={contactFormData.phone}
+                    onChange={handleContactInputChange}
+                    placeholder="Телефон *" 
                     className="text-professional-darkGray"
+                    required
                   />
                 </div>
                 <Input 
+                  name="email"
+                  value={contactFormData.email}
+                  onChange={handleContactInputChange}
                   placeholder="Email" 
                   type="email"
                   className="text-professional-darkGray"
                 />
                 <Textarea 
+                  name="message"
+                  value={contactFormData.message}
+                  onChange={handleContactInputChange}
                   placeholder="Опишите ваши задачи" 
                   rows={4}
                   className="text-professional-darkGray"
                 />
-                <ConsultationModal>
-                  <Button 
-                    className="w-full bg-professional-blue hover:bg-professional-blue/90"
-                    size="lg"
-                  >
-                    <Icon name="Send" size={20} className="mr-2" />
-                    Отправить заявку
-                  </Button>
-                </ConsultationModal>
+                <Button 
+                  type="submit"
+                  className="w-full bg-professional-blue hover:bg-professional-blue/90"
+                  size="lg"
+                >
+                  <Icon name="Send" size={20} className="mr-2" />
+                  Отправить заявку
+                </Button>
               </form>
             </div>
           </div>
