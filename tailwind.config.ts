@@ -28,7 +28,7 @@ export default {
 					blue: '#2563EB',
 					green: '#059669',
 					darkGray: '#1F2937',
-					lightGray: '#FFFAFC',
+					lightGray: '#F8F9FA',
 					red: '#DC2626'
 				},
 				primary: {

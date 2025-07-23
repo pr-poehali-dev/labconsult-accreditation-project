@@ -18,7 +18,7 @@ export const newsData: NewsItem[] = [
     source: 'Росаккредитация',
     category: 'accreditation',
     isImportant: true,
-    url: 'https://www.akkreditazia.ru/novosti-rosakkredi­taczii-vazhno/'
+    url: 'https://www.fsa.gov.ru/activities/accreditation/'
   },
   {
     id: '2',
@@ -28,7 +28,7 @@ export const newsData: NewsItem[] = [
     source: 'Росстандарт',
     category: 'standards',
     isImportant: true,
-    url: 'https://fsa.gov.ru/press-center/info/9418/'
+    url: 'https://www.fsa.gov.ru/press-center/press/'
   },
   {
     id: '3',

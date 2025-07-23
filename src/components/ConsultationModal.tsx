@@ -6,10 +6,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import Icon from "@/components/ui/icon";
 import { sendToWhatsApp, openWhatsAppChat } from "@/utils/whatsapp";
+import { toast } from "@/hooks/use-toast";
 
 interface ConsultationModalProps {
   children: React.ReactNode;
 }
+
+const CONTACT_PHONE = "+7 (999) 964-56-17";
 
 const ConsultationModal = ({ children }: ConsultationModalProps) => {
   const [formData, setFormData] = useState({
@@ -31,7 +34,11 @@ const ConsultationModal = ({ children }: ConsultationModalProps) => {
     e.preventDefault();
     
     if (!formData.name || !formData.phone) {
-      alert('Пожалуйста, заполните обязательные поля (Имя и Телефон)');
+      toast({
+        title: "Ошибка валидации",
+        description: "Пожалуйста, заполните обязательные поля (Имя и Телефон)",
+        variant: "destructive",
+      });
       return;
     }
 
@@ -51,16 +58,32 @@ const ConsultationModal = ({ children }: ConsultationModalProps) => {
         }),
       });
 
-      if (response.ok) {
-        alert('Заявка успешно отправлена! Наш специалист свяжется с вами в течение часа.');
-        // Очищаем форму после успешной отправки
-        setFormData({ name: '', phone: '', email: '', message: '' });
-      } else {
-        throw new Error('Ошибка при отправке заявки');
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || `Ошибка сервера: ${response.status}`);
       }
+
+      const result = await response.json();
+      
+      toast({
+        title: "Заявка отправлена!",
+        description: "Наш специалист свяжется с вами в течение часа.",
+        variant: "default",
+      });
+      
+      // Очищаем форму после успешной отправки
+      setFormData({ name: '', phone: '', email: '', message: '' });
+      
     } catch (error) {
       console.error('Ошибка отправки:', error);
-      alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте еще раз или свяжитесь с нами по телефону.');
+      
+      const errorMessage = error instanceof Error ? error.message : 'Неизвестная ошибка';
+      
+      toast({
+        title: "Ошибка отправки",
+        description: `Произошла ошибка: ${errorMessage}. Попробуйте еще раз или свяжитесь с нами по телефону ${CONTACT_PHONE}.`,
+        variant: "destructive",
+      });
     }
   };
 
@@ -174,7 +197,7 @@ const ConsultationModal = ({ children }: ConsultationModalProps) => {
               onClick={() => openWhatsAppChat()}
             >
               <Icon name="Phone" size={20} className="mr-2" />
-              +7 (999) 964-56-17
+              {CONTACT_PHONE}
             </Button>
           </div>
         </form>
