@@ -97,10 +97,7 @@ const Index = () => {
               </Button>
             </ConsultationModal>
             <ConsultationModal>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-professional-blue">
-                <Icon name="Settings" size={20} className="mr-2" />
-                Подобрать оборудование
-              </Button>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-professional-blue">Подобрать оборудование</Button>
             </ConsultationModal>
           </div>
         </div>
