@@ -4,8 +4,16 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
+import ConsultationModal from "@/components/ConsultationModal";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Index = () => {
+  const heroAnimation = useScrollAnimation();
+  const servicesAnimation = useScrollAnimation();
+  const advantagesAnimation = useScrollAnimation();
+  const statsAnimation = useScrollAnimation();
+  const contactAnimation = useScrollAnimation();
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -20,14 +28,21 @@ const Index = () => {
             <a href="#advantages" className="hover:text-professional-green transition-colors">Преимущества</a>
             <a href="#contact" className="hover:text-professional-green transition-colors">Контакты</a>
           </nav>
-          <Button variant="secondary" className="bg-professional-green hover:bg-professional-green/90 text-white">
-            Получить консультацию
-          </Button>
+          <ConsultationModal>
+            <Button variant="secondary" className="bg-professional-green hover:bg-professional-green/90 text-white">
+              Получить консультацию
+            </Button>
+          </ConsultationModal>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-professional-blue to-professional-green text-white py-20">
+      <section 
+        ref={heroAnimation.ref}
+        className={`bg-gradient-to-r from-professional-blue to-professional-green text-white py-20 transition-all duration-1000 ${
+          heroAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'
+        }`}
+      >
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-5xl font-montserrat font-bold mb-6">
             Аккредитация испытательных лабораторий
@@ -37,20 +52,30 @@ const Index = () => {
             Более 10 лет опыта работы с ведущими предприятиями России.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-professional-blue hover:bg-gray-100">
-              <Icon name="FileCheck" size={20} className="mr-2" />
-              Заказать аккредитацию
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-professional-blue">
-              <Icon name="Settings" size={20} className="mr-2" />
-              Подобрать оборудование
-            </Button>
+            <ConsultationModal>
+              <Button size="lg" className="bg-white text-professional-blue hover:bg-gray-100">
+                <Icon name="FileCheck" size={20} className="mr-2" />
+                Заказать аккредитацию
+              </Button>
+            </ConsultationModal>
+            <ConsultationModal>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-professional-blue">
+                <Icon name="Settings" size={20} className="mr-2" />
+                Подобрать оборудование
+              </Button>
+            </ConsultationModal>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-professional-lightGray">
+      <section 
+        id="services" 
+        ref={servicesAnimation.ref}
+        className={`py-20 bg-professional-lightGray transition-all duration-1000 ${
+          servicesAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'
+        }`}
+      >
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h3 className="text-4xl font-montserrat font-bold text-professional-darkGray mb-4">
@@ -62,7 +87,9 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className={`hover:shadow-lg transition-all duration-700 ${
+              servicesAnimation.isVisible ? 'animate-fade-in-left' : 'opacity-0 -translate-x-8'
+            }`}>
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="bg-professional-blue p-3 rounded-lg">
@@ -98,7 +125,9 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className={`hover:shadow-lg transition-all duration-700 delay-300 ${
+              servicesAnimation.isVisible ? 'animate-fade-in-right' : 'opacity-0 translate-x-8'
+            }`}>
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="bg-professional-green p-3 rounded-lg">
@@ -138,7 +167,13 @@ const Index = () => {
       </section>
 
       {/* Advantages Section */}
-      <section id="advantages" className="py-20 bg-white">
+      <section 
+        id="advantages" 
+        ref={advantagesAnimation.ref}
+        className={`py-20 bg-white transition-all duration-1000 ${
+          advantagesAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'
+        }`}
+      >
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h3 className="text-4xl font-montserrat font-bold text-professional-darkGray mb-4">
@@ -150,8 +185,10 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="bg-professional-blue p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+            <div className={`text-center transition-all duration-700 ${
+              advantagesAnimation.isVisible ? 'animate-scale-in' : 'opacity-0 scale-90'
+            }`}>
+              <div className="bg-professional-blue p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center hover:scale-110 transition-transform">
                 <Icon name="Users" size={32} className="text-white" />
               </div>
               <h4 className="text-xl font-montserrat font-bold text-professional-darkGray mb-3">
@@ -162,8 +199,10 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="bg-professional-green p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+            <div className={`text-center transition-all duration-700 delay-200 ${
+              advantagesAnimation.isVisible ? 'animate-scale-in' : 'opacity-0 scale-90'
+            }`}>
+              <div className="bg-professional-green p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center hover:scale-110 transition-transform">
                 <Icon name="Shield" size={32} className="text-white" />
               </div>
               <h4 className="text-xl font-montserrat font-bold text-professional-darkGray mb-3">
@@ -174,8 +213,10 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="bg-professional-red p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+            <div className={`text-center transition-all duration-700 delay-400 ${
+              advantagesAnimation.isVisible ? 'animate-scale-in' : 'opacity-0 scale-90'
+            }`}>
+              <div className="bg-professional-red p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center hover:scale-110 transition-transform">
                 <Icon name="Clock" size={32} className="text-white" />
               </div>
               <h4 className="text-xl font-montserrat font-bold text-professional-darkGray mb-3">
@@ -187,8 +228,13 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="mt-16 text-center">
-            <div className="bg-professional-lightGray p-8 rounded-lg">
+          <div 
+            ref={statsAnimation.ref}
+            className="mt-16 text-center"
+          >
+            <div className={`bg-professional-lightGray p-8 rounded-lg transition-all duration-1000 ${
+              statsAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'
+            }`}>
               <div className="flex flex-wrap justify-center gap-8">
                 <div className="text-center">
                   <div className="text-3xl font-montserrat font-bold text-professional-blue">150+</div>
@@ -209,7 +255,13 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-professional-darkGray text-white">
+      <section 
+        id="contact" 
+        ref={contactAnimation.ref}
+        className={`py-20 bg-professional-darkGray text-white transition-all duration-1000 ${
+          contactAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'
+        }`}
+      >
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12">
             <div>
@@ -261,13 +313,15 @@ const Index = () => {
                   rows={4}
                   className="text-professional-darkGray"
                 />
-                <Button 
-                  className="w-full bg-professional-blue hover:bg-professional-blue/90"
-                  size="lg"
-                >
-                  <Icon name="Send" size={20} className="mr-2" />
-                  Отправить заявку
-                </Button>
+                <ConsultationModal>
+                  <Button 
+                    className="w-full bg-professional-blue hover:bg-professional-blue/90"
+                    size="lg"
+                  >
+                    <Icon name="Send" size={20} className="mr-2" />
+                    Отправить заявку
+                  </Button>
+                </ConsultationModal>
               </form>
             </div>
           </div>
