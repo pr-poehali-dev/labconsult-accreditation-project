@@ -35,13 +35,27 @@ const ConsultationModal = ({ children }: ConsultationModalProps) => {
       return;
     }
 
-    // Отправляем данные в WhatsApp
-    sendToWhatsApp({
-      name: formData.name,
-      phone: formData.phone,
-      email: formData.email,
-      message: formData.message || 'Клиент хочет получить консультацию по услугам ЛабКонсалт'
-    });
+    // Формируем письмо для отправки на почту
+    const subject = 'Новая заявка на консультацию - ЛабКонсалт';
+    const body = `
+Новая заявка на консультацию:
+
+Имя: ${formData.name}
+Телефон: ${formData.phone}
+Email: ${formData.email || 'Не указан'}
+Сообщение: ${formData.message || 'Клиент хочет получить консультацию по услугам ЛабКонсалт'}
+
+---
+Заявка отправлена через сайт ЛабКонсалт
+Дата: ${new Date().toLocaleString('ru-RU')}
+    `.trim();
+
+    // Открываем почтовый клиент с заполненными данными
+    const mailtoUrl = `mailto:Konsalting-Lab@yandex.ru?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(mailtoUrl, '_blank');
+
+    // Показываем сообщение об успешной отправке
+    alert('Заявка подготовлена! Откроется почтовый клиент для отправки.');
 
     // Очищаем форму после отправки
     setFormData({ name: '', phone: '', email: '', message: '' });
