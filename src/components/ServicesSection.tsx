@@ -9,30 +9,30 @@ const ServicesSection = () => {
     <section 
       id="services" 
       ref={servicesAnimation.ref}
-      className={`py-20 bg-professional-lightGray transition-all duration-1000 ${
+      className={`py-12 sm:py-16 lg:py-20 bg-professional-lightGray transition-all duration-1000 ${
         servicesAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h3 className="text-4xl font-montserrat font-bold text-professional-darkGray mb-4">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-professional-darkGray mb-3 sm:mb-4">
             Наши услуги
           </h3>
-          <p className="text-lg font-open-sans text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg font-open-sans text-gray-600 max-w-xl lg:max-w-2xl mx-auto px-4">
             Комплексные решения для испытательных лабораторий: от получения аккредитации до поставки оборудования
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <Card className={`hover:shadow-lg transition-all duration-700 ${
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          <Card className={`hover:shadow-lg transition-all duration-700 hover:scale-105 touch-manipulation ${
             servicesAnimation.isVisible ? 'animate-fade-in-left' : 'opacity-0 -translate-x-8'
           }`}>
-            <CardHeader>
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="bg-professional-blue p-3 rounded-lg">
-                  <Icon name="Award" size={24} className="text-white" />
+            <CardHeader className="pb-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-3 mb-2">
+                <div className="bg-professional-blue p-2.5 sm:p-3 rounded-lg flex-shrink-0">
+                  <Icon name="Award" size={20} className="text-white sm:w-6 sm:h-6" />
                 </div>
-                <CardTitle className="text-2xl font-montserrat text-professional-darkGray">
+                <CardTitle className="text-lg sm:text-xl lg:text-2xl font-montserrat text-professional-darkGray leading-tight">
                   Аккредитация лабораторий
                 </CardTitle>
               </div>

@@ -69,7 +69,7 @@ const ConsultationModal = ({ children }: ConsultationModalProps) => {
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px] bg-white">
+      <DialogContent className="sm:max-w-[600px] bg-white mx-4 max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-montserrat font-bold text-professional-darkGray flex items-center">
             <Icon name="MessageSquare" size={24} className="mr-3 text-professional-blue" />
