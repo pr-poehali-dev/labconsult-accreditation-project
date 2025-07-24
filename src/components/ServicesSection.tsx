@@ -78,7 +78,7 @@ const ServicesSection = () => {
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
               style={{
-                backgroundImage: 'url(/img/7b2f5a05-5028-4e22-a37a-f5b435b2ada8.jpg)'
+                backgroundImage: 'url(/img/f1921ef6-361d-488a-9fe5-be2ca84278e5.jpg)'
               }}
             />
             <div className="relative z-10">

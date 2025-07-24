@@ -46,11 +46,21 @@ const ContactSection = () => {
     <section 
       id="contact" 
       ref={contactAnimation.ref}
-      className={`py-20 bg-professional-darkGray text-white transition-all duration-1000 ${
+      className={`relative py-20 bg-professional-darkGray text-white transition-all duration-1000 overflow-hidden ${
         contactAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+        style={{
+          backgroundImage: 'url(/img/04874455-380a-4363-963e-2f82937f2835.jpg)'
+        }}
+      />
+      
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-professional-darkGray/90" />
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12">
           <div>
             <h3 className="text-4xl font-montserrat font-bold mb-6">

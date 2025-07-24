@@ -29,7 +29,7 @@ const AdvantagesSection = () => {
           }`}>
             <div className="relative mb-6">
               <img 
-                src="/img/4c4cd06c-c3a0-462a-87d2-2d4472a141e6.jpg" 
+                src="/img/40526979-141a-4bf7-9b34-64b9f88ef1e6.jpg" 
                 alt="Опытная команда ЛабКонсалт" 
                 className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg"
               />

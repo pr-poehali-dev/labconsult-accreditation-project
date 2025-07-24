@@ -7,9 +7,19 @@ const EquipmentSection = () => {
   return (
     <section 
       id="equipment" 
-      className="py-20 bg-white"
+      className="relative py-20 bg-white overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
+        style={{
+          backgroundImage: 'url(/img/0efb48dc-4ef0-4dc4-a7f7-1b88caf39f7a.jpg)'
+        }}
+      />
+      
+      {/* Light Overlay */}
+      <div className="absolute inset-0 bg-white/95" />
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <h3 className="text-4xl font-montserrat font-bold text-professional-darkGray mb-8">
             Подобрать оборудование

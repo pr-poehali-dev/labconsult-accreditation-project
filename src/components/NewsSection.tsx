@@ -77,8 +77,18 @@ const NewsSection = () => {
   const recentNews = newsData.slice(0, 6);
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="relative py-20 bg-gray-50 overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
+        style={{
+          backgroundImage: 'url(/img/77cf3f94-26ae-4b53-8a1d-34157e1f666d.jpg)'
+        }}
+      />
+      
+      {/* Light Overlay */}
+      <div className="absolute inset-0 bg-gray-50/95" />
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div 
           ref={titleAnimation.ref}
           className={`text-center mb-16 transition-all duration-1000 ${
