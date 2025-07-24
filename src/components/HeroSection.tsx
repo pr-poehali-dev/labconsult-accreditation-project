@@ -9,11 +9,21 @@ const HeroSection = () => {
   return (
     <section 
       ref={heroAnimation.ref}
-      className={`bg-gradient-to-br from-professional-blue via-professional-blue to-professional-green text-white py-12 sm:py-16 lg:py-20 min-h-[60vh] sm:min-h-[70vh] flex items-center transition-all duration-1000 ${
+      className={`relative bg-gradient-to-br from-professional-blue via-professional-blue to-professional-green text-white py-12 sm:py-16 lg:py-20 min-h-[60vh] sm:min-h-[70vh] flex items-center transition-all duration-1000 overflow-hidden ${
         heroAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center w-full">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        style={{
+          backgroundImage: 'url(/img/035301a5-b282-4fe4-915c-7e191f3e0991.jpg)'
+        }}
+      />
+      
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-professional-blue/90 via-professional-blue/85 to-professional-green/90" />
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center w-full">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-montserrat font-bold mb-4 sm:mb-6 leading-tight">
           Аккредитация испытательных лабораторий
         </h2>

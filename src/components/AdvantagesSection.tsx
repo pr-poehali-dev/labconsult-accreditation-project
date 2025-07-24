@@ -24,11 +24,18 @@ const AdvantagesSection = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          <div className={`text-center transition-all duration-700 ${
+          <div className={`text-center transition-all duration-700 relative ${
             advantagesAnimation.isVisible ? 'animate-scale-in' : 'opacity-0 scale-90'
           }`}>
-            <div className="bg-professional-blue p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center hover:scale-110 transition-transform">
-              <Icon name="Users" size={32} className="text-white" />
+            <div className="relative mb-6">
+              <img 
+                src="/img/4c4cd06c-c3a0-462a-87d2-2d4472a141e6.jpg" 
+                alt="Опытная команда ЛабКонсалт" 
+                className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg"
+              />
+              <div className="absolute -bottom-2 -right-2 bg-professional-blue p-2 rounded-full">
+                <Icon name="Users" size={16} className="text-white" />
+              </div>
             </div>
             <h4 className="text-xl font-montserrat font-bold text-professional-darkGray mb-3">
               Опытная команда

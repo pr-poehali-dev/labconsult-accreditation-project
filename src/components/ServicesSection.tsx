@@ -24,19 +24,27 @@ const ServicesSection = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-          <Card className={`hover:shadow-lg transition-all duration-700 hover:scale-105 touch-manipulation ${
+          <Card className={`hover:shadow-lg transition-all duration-700 hover:scale-105 touch-manipulation relative overflow-hidden ${
             servicesAnimation.isVisible ? 'animate-fade-in-left' : 'opacity-0 -translate-x-8'
           }`}>
-            <CardHeader className="pb-4">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-3 mb-2">
-                <div className="bg-professional-blue p-2.5 sm:p-3 rounded-lg flex-shrink-0">
-                  <Icon name="Award" size={20} className="text-white sm:w-6 sm:h-6" />
+            {/* Background Image */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+              style={{
+                backgroundImage: 'url(/img/9e5376e2-a619-45a6-bcd2-3433b5f51480.jpg)'
+              }}
+            />
+            <div className="relative z-10">
+              <CardHeader className="pb-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-3 mb-2">
+                  <div className="bg-professional-blue p-2.5 sm:p-3 rounded-lg flex-shrink-0">
+                    <Icon name="Award" size={20} className="text-white sm:w-6 sm:h-6" />
+                  </div>
+                  <CardTitle className="text-lg sm:text-xl lg:text-2xl font-montserrat text-professional-darkGray leading-tight">
+                    Аккредитация лабораторий
+                  </CardTitle>
                 </div>
-                <CardTitle className="text-lg sm:text-xl lg:text-2xl font-montserrat text-professional-darkGray leading-tight">
-                  Аккредитация лабораторий
-                </CardTitle>
-              </div>
-            </CardHeader>
+              </CardHeader>
             <CardContent>
               <CardDescription className="text-gray-600 font-open-sans mb-6">
                 Полное сопровождение процесса аккредитации в соответствии с требованиями ГОСТ ISO/IEC 17025
@@ -60,21 +68,30 @@ const ServicesSection = () => {
                 </div>
               </div>
             </CardContent>
+            </div>
           </Card>
 
-          <Card className={`hover:shadow-lg transition-all duration-700 delay-300 ${
+          <Card className={`hover:shadow-lg transition-all duration-700 delay-300 relative overflow-hidden ${
             servicesAnimation.isVisible ? 'animate-fade-in-right' : 'opacity-0 translate-x-8'
           }`}>
-            <CardHeader>
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="bg-professional-green p-3 rounded-lg">
-                  <Icon name="Settings" size={24} className="text-white" />
+            {/* Background Image */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+              style={{
+                backgroundImage: 'url(/img/7b2f5a05-5028-4e22-a37a-f5b435b2ada8.jpg)'
+              }}
+            />
+            <div className="relative z-10">
+              <CardHeader>
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="bg-professional-green p-3 rounded-lg">
+                    <Icon name="Settings" size={24} className="text-white" />
+                  </div>
+                  <CardTitle className="text-2xl font-montserrat text-professional-darkGray">
+                    Поставка оборудования
+                  </CardTitle>
                 </div>
-                <CardTitle className="text-2xl font-montserrat text-professional-darkGray">
-                  Поставка оборудования
-                </CardTitle>
-              </div>
-            </CardHeader>
+              </CardHeader>
             <CardContent>
               <CardDescription className="text-gray-600 font-open-sans mb-6">
                 Подбор и поставка современного испытательного оборудования от ведущих мировых производителей
@@ -98,6 +115,7 @@ const ServicesSection = () => {
                 </div>
               </div>
             </CardContent>
+            </div>
           </Card>
         </div>
       </div>
