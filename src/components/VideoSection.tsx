@@ -11,26 +11,26 @@ const VideoSection = () => {
   const videos = [
     {
       id: 1,
-      title: "Современная лаборатория",
-      description: "Обзор оборудования и возможностей современной аккредитованной лаборатории",
+      title: "Процедура аккредитации лабораторий",
+      description: "Наиболее частые вопросы по аккредитации лабораторий от канала РОСАККЛАБ",
       thumbnail: "/img/0efb48dc-4ef0-4dc4-a7f7-1b88caf39f7a.jpg",
-      embedId: "LXb3EKWsInQ", // OSHA Laboratory Safety Training
-      category: "Оборудование"
-    },
-    {
-      id: 2,
-      title: "Процесс аккредитации",
-      description: "Пошаговый процесс получения аккредитации лаборатории",
-      thumbnail: "/img/52de1c19-a4ed-4d7d-9b72-29397e7bdb45.jpg",
-      embedId: "ScMzIvxBSi4", // Laboratory Quality Control
+      embedId: "df098e9a70498a37c4d6ded159e01fbd",
       category: "Аккредитация"
     },
     {
+      id: 2,
+      title: "Учебная лаборатория нейротехнологий",
+      description: "Обзор современного лабораторного комплекса BiTronics Lab для изучения нейротехнологий",
+      thumbnail: "/img/52de1c19-a4ed-4d7d-9b72-29397e7bdb45.jpg",
+      embedId: "f0ddbe3dc27426d5eee1f261a8efb452",
+      category: "Оборудование"
+    },
+    {
       id: 3,
-      title: "Химический анализ",
-      description: "Демонстрация процесса проведения химических анализов",
+      title: "Лабораторные исследования ВНИМИ",
+      description: "Комплексные исследования в аккредитованной лаборатории молочной промышленности",
       thumbnail: "/img/18bb8c7e-4014-42d0-bbe0-b0ecdcf3fdc5.jpg",
-      embedId: "3mnSDifDSxQ", // Chemical Analysis Techniques
+      embedId: "1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p",
       category: "Анализы"
     }
   ];
@@ -58,16 +58,25 @@ const VideoSection = () => {
             <Card className="overflow-hidden shadow-2xl">
               <CardContent className="p-0">
                 <div className="relative aspect-video bg-black">
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    src={`https://www.youtube.com/embed/${videos[selectedVideo].embedId}?autoplay=0&rel=0&modestbranding=1`}
-                    title={videos[selectedVideo].title}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="absolute inset-0"
-                  />
+                  {videos[selectedVideo].embedId ? (
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src={`https://rutube.ru/play/embed/${videos[selectedVideo].embedId}/`}
+                      title={videos[selectedVideo].title}
+                      frameBorder="0"
+                      allow="clipboard-write; autoplay"
+                      allowFullScreen
+                      className="absolute inset-0"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center bg-gray-900">
+                      <div className="text-center text-white">
+                        <Icon name="Play" size={48} className="mx-auto mb-4 opacity-50" />
+                        <p className="text-lg">Видео недоступно</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
@@ -86,13 +95,15 @@ const VideoSection = () => {
                     {videos[selectedVideo].description}
                   </p>
                   <div className="flex items-center space-x-4">
-                    <Button
-                      onClick={() => window.open(`https://www.youtube.com/watch?v=${videos[selectedVideo].embedId}`, '_blank')}
-                      className="bg-red-600 hover:bg-red-700 text-white"
-                    >
-                      <Icon name="Youtube" size={20} className="mr-2" />
-                      Смотреть на YouTube
-                    </Button>
+                    {videos[selectedVideo].embedId && (
+                      <Button
+                        onClick={() => window.open(`https://rutube.ru/video/${videos[selectedVideo].embedId}/`, '_blank')}
+                        className="bg-blue-600 hover:bg-blue-700 text-white"
+                      >
+                        <Icon name="ExternalLink" size={20} className="mr-2" />
+                        Смотреть на Rutube
+                      </Button>
+                    )}
                     <Button variant="outline" className="border-professional-blue text-professional-blue hover:bg-professional-blue hover:text-white">
                       <Icon name="Share2" size={16} className="mr-2" />
                       Поделиться
@@ -152,21 +163,21 @@ const VideoSection = () => {
             ))}
             
             {/* Subscribe Button */}
-            <Card className="bg-gradient-to-r from-red-500 to-red-600 text-white">
+            <Card className="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
               <CardContent className="p-6 text-center">
-                <Icon name="Youtube" size={32} className="mx-auto mb-3" />
+                <Icon name="Video" size={32} className="mx-auto mb-3" />
                 <h5 className="font-montserrat font-bold mb-2">
-                  Подписывайтесь на канал
+                  Смотрите наши видео
                 </h5>
-                <p className="text-red-100 text-sm mb-4">
-                  Новые обзоры и полезные материалы
+                <p className="text-blue-100 text-sm mb-4">
+                  Обзоры лабораторного оборудования и процессов
                 </p>
                 <Button 
-                  className="bg-white text-red-600 hover:bg-red-50 w-full"
-                  onClick={() => window.open('https://youtube.com/@KonsaltingLab', '_blank')}
+                  className="bg-white text-blue-600 hover:bg-blue-50 w-full"
+                  onClick={() => window.open('https://rutube.ru/', '_blank')}
                 >
-                  <Icon name="Bell" size={16} className="mr-2" />
-                  Подписаться
+                  <Icon name="ExternalLink" size={16} className="mr-2" />
+                  Rutube
                 </Button>
               </CardContent>
             </Card>
