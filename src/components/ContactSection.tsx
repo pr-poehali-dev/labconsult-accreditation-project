@@ -70,7 +70,7 @@ const ContactSection = () => {
               Оставьте заявку, и наш специалист свяжется с вами в течение часа для обсуждения ваших задач
             </p>
             
-            <div className="space-y-4">
+            <div className="space-y-4 mb-8">
               <div className="flex items-center space-x-3">
                 <Icon name="Phone" size={20} className="text-professional-green" />
                 <span className="font-open-sans">+7 (999) 964-56-17</span>
@@ -82,6 +82,22 @@ const ContactSection = () => {
               <div className="flex items-center space-x-3">
                 <Icon name="MapPin" size={20} className="text-professional-green" />
                 <span className="font-open-sans">г. Москва, пр-т Мира, д. 106</span>
+              </div>
+            </div>
+
+            {/* Реквизиты */}
+            <div className="bg-white/10 rounded-lg p-6 border border-white/20">
+              <h4 className="text-xl font-montserrat font-bold mb-4 text-professional-green">
+                Реквизиты
+              </h4>
+              <div className="space-y-2">
+                <div className="flex items-start space-x-3">
+                  <Icon name="User" size={16} className="text-professional-green mt-1" />
+                  <div className="font-open-sans text-sm">
+                    <div className="font-semibold">ИП Гераськина Екатерина Глебовна</div>
+                    <div className="text-gray-300">г. Москва</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
