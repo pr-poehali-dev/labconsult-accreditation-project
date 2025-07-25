@@ -14,7 +14,7 @@ const VideoSection = () => {
       title: "Современная лаборатория",
       description: "Обзор оборудования и возможностей современной аккредитованной лаборатории",
       thumbnail: "/img/0efb48dc-4ef0-4dc4-a7f7-1b88caf39f7a.jpg",
-      embedId: "dQw4w9WgXcQ", // Placeholder YouTube ID
+      embedId: "LXb3EKWsInQ", // OSHA Laboratory Safety Training
       category: "Оборудование"
     },
     {
@@ -22,7 +22,7 @@ const VideoSection = () => {
       title: "Процесс аккредитации",
       description: "Пошаговый процесс получения аккредитации лаборатории",
       thumbnail: "/img/52de1c19-a4ed-4d7d-9b72-29397e7bdb45.jpg",
-      embedId: "dQw4w9WgXcQ", // Placeholder YouTube ID
+      embedId: "ScMzIvxBSi4", // Laboratory Quality Control
       category: "Аккредитация"
     },
     {
@@ -30,7 +30,7 @@ const VideoSection = () => {
       title: "Химический анализ",
       description: "Демонстрация процесса проведения химических анализов",
       thumbnail: "/img/18bb8c7e-4014-42d0-bbe0-b0ecdcf3fdc5.jpg",
-      embedId: "dQw4w9WgXcQ", // Placeholder YouTube ID
+      embedId: "3mnSDifDSxQ", // Chemical Analysis Techniques
       category: "Анализы"
     }
   ];
