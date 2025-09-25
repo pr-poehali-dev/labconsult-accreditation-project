@@ -13,7 +13,7 @@ const VideoSection = () => {
       id: 1,
       title: "Процедура аккредитации лабораторий",
       description: "Наиболее частые вопросы по аккредитации лабораторий от канала РОСАККЛАБ",
-      thumbnail: "/img/0efb48dc-4ef0-4dc4-a7f7-1b88caf39f7a.jpg",
+      thumbnail: "/img/5db7e7aa-4e39-4c90-9a85-d62d3f15aad2.jpg",
       embedId: "df098e9a70498a37c4d6ded159e01fbd",
       category: "Аккредитация"
     },
@@ -21,7 +21,7 @@ const VideoSection = () => {
       id: 2,
       title: "Учебная лаборатория нейротехнологий",
       description: "Обзор современного лабораторного комплекса BiTronics Lab для изучения нейротехнологий",
-      thumbnail: "/img/52de1c19-a4ed-4d7d-9b72-29397e7bdb45.jpg",
+      thumbnail: "/img/6dc8cf59-f0b5-48cb-95c6-21d4abebd7ec.jpg",
       embedId: "f0ddbe3dc27426d5eee1f261a8efb452",
       category: "Оборудование"
     },
@@ -29,8 +29,8 @@ const VideoSection = () => {
       id: 3,
       title: "Лабораторные исследования ВНИМИ",
       description: "Комплексные исследования в аккредитованной лаборатории молочной промышленности",
-      thumbnail: "/img/18bb8c7e-4014-42d0-bbe0-b0ecdcf3fdc5.jpg",
-      embedId: "1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p",
+      thumbnail: "/img/2b90c890-4612-4718-bf1f-cec785a37650.jpg",
+      embedId: "b8e1a6f7c2d4e9f3a5b7c8d9e0f1a2b3",
       category: "Анализы"
     }
   ];

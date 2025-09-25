@@ -54,7 +54,7 @@ const ContactSection = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
         style={{
-          backgroundImage: 'url(/img/04874455-380a-4363-963e-2f82937f2835.jpg)'
+          backgroundImage: 'url(/img/16abd5a5-c65d-4085-933d-1f50f75da2c6.jpg)'
         }}
       />
       
