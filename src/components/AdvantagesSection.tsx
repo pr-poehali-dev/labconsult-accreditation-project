@@ -48,8 +48,15 @@ const AdvantagesSection = () => {
           <div className={`text-center transition-all duration-700 delay-200 ${
             advantagesAnimation.isVisible ? 'animate-scale-in' : 'opacity-0 scale-90'
           }`}>
-            <div className="bg-professional-green p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center hover:scale-110 transition-transform">
-              <Icon name="Shield" size={32} className="text-white" />
+            <div className="relative mb-6">
+              <img 
+                src="/img/890a727a-8651-4e23-b904-9bf5f21db131.jpg" 
+                alt="Гарантия качества аккредитации" 
+                className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg"
+              />
+              <div className="absolute -bottom-2 -right-2 bg-professional-green p-2 rounded-full">
+                <Icon name="Shield" size={16} className="text-white" />
+              </div>
             </div>
             <h4 className="text-xl font-montserrat font-bold text-professional-darkGray mb-3">
               Гарантия качества
@@ -62,8 +69,15 @@ const AdvantagesSection = () => {
           <div className={`text-center transition-all duration-700 delay-400 ${
             advantagesAnimation.isVisible ? 'animate-scale-in' : 'opacity-0 scale-90'
           }`}>
-            <div className="bg-professional-red p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center hover:scale-110 transition-transform">
-              <Icon name="Clock" size={32} className="text-white" />
+            <div className="relative mb-6">
+              <img 
+                src="/img/5d86f2be-00aa-427c-b6b1-ab70ff45da42.jpg" 
+                alt="Быстрые сроки выполнения работ" 
+                className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg"
+              />
+              <div className="absolute -bottom-2 -right-2 bg-professional-red p-2 rounded-full">
+                <Icon name="Clock" size={16} className="text-white" />
+              </div>
             </div>
             <h4 className="text-xl font-montserrat font-bold text-professional-darkGray mb-3">
               Быстрые сроки
